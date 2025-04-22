@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Преподаватель</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="teacher-app">
+        <h1>Преподаватель</h1>
+        <button onclick="uploadAssignment()">Выложить домашнее задание</button>
+        <button onclick="createTest()">Создать тест</button>
+        <button id="logout-button">Выйти</button>
+
+        <div id="content-form"></div>
+    </div>
+
+    <script>
+        document.getElementById('logout-button').addEventListener('click', function() {
+            fetch('/api/logout')
+                .then(() => {
+                    window.location.href = '/index.html'; // Перенаправление на страницу входа
+                });
+        });
+
+        function uploadAssignment() {
+            // Логика для загрузки домашнего задания
+            const form = `<form id="uploadAssignmentForm" enctype="multipart/form-data">
+                <input type="file" name="assignmentFile" required>
+                <button type="submit">Загрузить домашнее задание</button>
+            </form>`;
+            document.getElementById('content-form').innerHTML = form;
+
+            document.getElementById('uploadAssignmentForm').addEventListener('submit', function (event) {
+                event.preventDefault();
+                const formData = new FormData(event.target);
+                // Отправка файла на сервер
+                fetch('/api/upload-assignment', {
+                    method: 'POST',
+                    body: formData,
+                }).then(response => response.json())
+                  .then(result => alert(result.message));
+            });
+        }
+
+        function createTest() {
+            // Логика для создания теста
+            const form = `<form id="createTestForm">
+                <input type="text" name="question" placeholder="Текст вопроса" required>
+                <input type="text" name="answer1" placeholder="Ответ 1" required>
+                <input type="text" name="answer2" placeholder="Ответ 2" required>
+                <input type="text" name="answer3" placeholder="Ответ 3" required>
+                <input type="text" name="answer4" placeholder="Ответ 4" required>
+                <input type="text" name="correctAnswers" placeholder="Номера правильных ответов через пробел" required>
+                <button type="submit">Создать тест</button>
+            </form>`;
+            document.getElementById('content-form').innerHTML = form;
+
+            document.getElementById('createTestForm').addEventListener('submit', function (event) {
+                event.preventDefault();
+                const formData = new FormData(event.target);
+                const data = {
+                    question: formData.get('question'),
+                    answers: [
+                        formData.get('answer1'),
+                        formData.get('answer2'),
+                        formData.get('answer3'),
+                        formData.get('answer4')
+                    ],
+                    correctAnswers: formData.get('correctAnswers')
+                };
+                // Отправка запроса на создание теста
+                fetch('/api/create-test', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data),
+                }).then(response => response.json())
+                  .then(result => alert(result.message));
+            });
+        }
+    </script>
+</body>
+</html>
