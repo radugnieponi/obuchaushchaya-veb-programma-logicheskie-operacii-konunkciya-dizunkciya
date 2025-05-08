@@ -1,0 +1,12 @@
+{
+  "user": "ваш_пользователь",
+  "password": "ваш_пароль",
+  "server": "localhost",
+  "port": "54275",
+  "database": "EducationPortal",
+  "options": {
+    "encrypt": true,
+    "trustServerCertificate": true,
+    "integratedSecurity": true
+  }
+}
