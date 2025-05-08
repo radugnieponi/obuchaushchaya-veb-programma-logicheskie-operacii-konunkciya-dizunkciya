@@ -1,0 +1,53 @@
+<!-- Модальное окно создания преподавателя -->
+<div id="create-teacher-modal" class="modal hidden">
+  <div class="modal-content">
+    <span class="close-modal">&times;</span>
+    <h2>Создать учетную запись преподавателя</h2>
+    <form id="teacher-form">
+      <div class="form-group">
+        <label>ФИО:</label>
+        <input type="text" id="teacher-fullname" required>
+      </div>
+      <div class="form-group">
+        <label>Дата рождения:</label>
+        <input type="date" id="teacher-birthdate" required>
+      </div>
+      <div class="form-group">
+        <label>Предмет:</label>
+        <input type="text" id="teacher-subject">
+      </div>
+      <button type="submit" class="btn">Создать</button>
+    </form>
+  </div>
+</div>
+
+<!-- Модальное окно создания студента -->
+<div id="create-student-modal" class="modal hidden">
+  <div class="modal-content">
+    <span class="close-modal">&times;</span>
+    <h2>Создать учетную запись студента</h2>
+    <form id="student-form">
+      <div class="form-group">
+        <label>ФИО:</label>
+        <input type="text" id="student-fullname" required>
+      </div>
+      <div class="form-group">
+        <label>Дата рождения:</label>
+        <input type="date" id="student-birthdate" required>
+      </div>
+      <button type="submit" class="btn">Создать</button>
+    </form>
+  </div>
+</div>
+
+<!-- Модальное окно создания группы -->
+<div id="create-group-modal" class="modal hidden">
+  <div class="modal-content">
+    <span class="close-modal">&times;</span>
+    <h2>Создать группу</h2>
+    <div id="students-list" class="list-container"></div>
+    <form id="group-form">
+      <button type="submit" class="btn">Создать группу</button>
+    </form>
+  </div>
+</div>

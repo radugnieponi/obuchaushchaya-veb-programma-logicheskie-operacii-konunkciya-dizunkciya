@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Панель преподавателя</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <div id="app">
+    <header>
+      <h1>Панель преподавателя</h1>
+      <button id="logout-btn" class="btn">Выйти</button>
+    </header>
+    
+    <div class="teacher-tabs">
+      <button id="courses-tab" class="btn tab-btn active">Курсы</button>
+    </div>
+    
+    <div id="courses-content" class="tab-content">
+      <div id="courses-list" class="list-container"></div>
+      <div id="course-details" class="hidden"></div>
+    </div>
+    
+    <div id="homework-modal" class="modal hidden">
+      <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <h2>Выложить домашнее задание</h2>
+        <form id="upload-homework-form">
+          <div class="form-group">
+            <label for="hw-title">Название:</label>
+            <input type="text" id="hw-title" required>
+          </div>
+          <div class="form-group">
+            <label for="hw-description">Описание:</label>
+            <textarea id="hw-description" rows="3"></textarea>
+          </div>
+          <div class="form-group">
+            <label for="hw-file">Файл:</label>
+            <input type="file" id="hw-file" required>
+          </div>
+          <button type="submit" class="btn">Загрузить</button>
+        </form>
+      </div>
+    </div>
+    
+    <div id="test-modal" class="modal hidden">
+      <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <h2>Создать тест</h2>
+        <form id="create-test-form">
+          <div class="form-group">
+            <label for="test-title">Название теста:</label>
+            <input type="text" id="test-title" required>
+          </div>
+          <div class="form-group">
+            <label for="test-description">Описание:</label>
+            <textarea id="test-description" rows="3"></textarea>
+          </div>
+          
+          <div id="test-questions-container">
+            <div class="question-container" data-question-id="1">
+              <div class="form-group">
+                <label>Вопрос 1:</label>
+                <input type="text" class="question-text" required>
+              </div>
+              <div class="form-group">
+                <label>Ответ 1:</label>
+                <input type="text" class="answer-option" required>
+              </div>
+              <div class="form-group">
+                <label>Ответ 2:</label>
+                <input type="text" class="answer-option" required>
+              </div>
+              <div class="form-group">
+                <label>Ответ 3:</label>
+                <input type="text" class="answer-option" required>
+              </div>
+              <div class="form-group">
+                <label>Ответ 4:</label>
+                <input type="text" class="answer-option" required>
+              </div>
+              <div class="form-group">
+                <label>Правильные ответы (через пробел):</label>
+                <input type="text" class="correct-answers" required>
+              </div>
+            </div>
+          </div>
+          
+          <button type="button" id="add-question-btn" class="btn">Добавить вопрос</button>
+          <button type="submit" class="btn">Создать тест</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  
+  <script src="js/teacher.js"></script>
+</body>
+</html>

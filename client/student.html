@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Панель студента</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <div id="app">
+    <header>
+      <h1>Панель студента</h1>
+      <button id="logout-btn" class="btn">Выйти</button>
+    </header>
+    
+    <div class="student-actions">
+      <button id="homework-btn" class="btn">Домашнее задание</button>
+      <button id="tests-btn" class="btn">Тесты</button>
+    </div>
+    
+    <div id="homework-content" class="hidden">
+      <button id="subjects-hw-btn" class="btn">Предметы</button>
+      <div id="subjects-hw-list" class="list-container hidden"></div>
+      <div id="homeworks-list" class="hidden"></div>
+    </div>
+    
+    <div id="tests-content" class="hidden">
+      <button id="subjects-tests-btn" class="btn">Предметы</button>
+      <div id="subjects-tests-list" class="list-container hidden"></div>
+      <div id="tests-list" class="hidden"></div>
+    </div>
+  </div>
+  
+  <script src="js/student.js"></script>
+</body>
+</html>
